@@ -1,0 +1,64 @@
+Script started on Sun 24 Jan 2016 05:13:20 PM EST
+]0;005025913@csex11:~/cse330/lab2[?1034h[005025913@csex11 lab2]$ time ./insertionsort > oi[Kutput
+1000
+
+real	0m5.124s
+user	0m0.006s
+sys	0m0.003s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+2000
+
+real	0m2.641s
+user	0m0.015s
+sys	0m0.005s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+3000
+
+real	0m2.563s
+user	0m0.042s
+sys	0m0.005s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+4000
+
+real	0m2.420s
+user	0m0.054s
+sys	0m0.008s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+5000
+
+real	0m2.590s
+user	0m0.082s
+sys	0m0.010s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+6000
+
+real	0m2.759s
+user	0m0.118s
+sys	0m0.010s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+7000
+
+real	0m2.671s
+user	0m0.155s
+sys	0m0.016s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+8000
+
+real	0m3.035s
+user	0m0.205s
+sys	0m0.013s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+9000
+
+real	0m4.208s
+user	0m0.259s
+sys	0m0.016s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./insertionsort > output
+10000
+
+real	0m4.890s
+user	0m0.319s
+sys	0m0.013s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ exit
+
+Script done on Sun 24 Jan 2016 05:14:34 PM EST
