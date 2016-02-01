@@ -1,0 +1,64 @@
+Script started on Sun 24 Jan 2016 05:05:58 PM EST
+]0;005025913@csex11:~/cse330/lab2[?1034h[005025913@csex11 lab2]$ time ./selectionsort > output
+1000
+
+real	0m3.853s
+user	0m0.013s
+sys	0m0.005s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+2000
+
+real	0m3.469s
+user	0m0.040s
+sys	0m0.007s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+3000
+
+real	0m3.925s
+user	0m0.094s
+sys	0m0.009s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+4000
+
+real	0m3.978s
+user	0m0.161s
+sys	0m0.009s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+5000
+
+real	0m4.160s
+user	0m0.253s
+sys	0m0.009s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+6000
+
+real	0m3.375s
+user	0m0.408s
+sys	0m0.010s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+7000
+
+real	0m3.560s
+user	0m0.499s
+sys	0m0.011s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+8000
+
+real	0m3.845s
+user	0m0.649s
+sys	0m0.014s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+9000
+
+real	0m4.368s
+user	0m0.829s
+sys	0m0.011s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./selectionsort > output
+10000
+
+real	0m5.294s
+user	0m1.022s
+sys	0m0.018s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ exit
+
+Script done on Sun 24 Jan 2016 05:07:40 PM EST

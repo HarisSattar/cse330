@@ -1,0 +1,13 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+hmw1/homework1
+hmw1/input
+hmw1/numbers
+hmw1/numbers.cpp

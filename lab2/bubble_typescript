@@ -1,0 +1,64 @@
+Script started on Sun 24 Jan 2016 05:17:31 PM EST
+]0;005025913@csex11:~/cse330/lab2[?1034h[005025913@csex11 lab2]$ time ./bubblesort > output
+1000
+
+real	0m3.044s
+user	0m0.012s
+sys	0m0.002s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+2000
+
+real	0m2.247s
+user	0m0.043s
+sys	0m0.004s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+3000
+
+real	0m2.230s
+user	0m0.093s
+sys	0m0.006s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+4000
+
+real	0m2.141s
+user	0m0.175s
+sys	0m0.005s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+5000
+
+real	0m3.109s
+user	0m0.264s
+sys	0m0.008s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+6000
+
+real	0m2.721s
+user	0m0.373s
+sys	0m0.012s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+7000
+
+real	0m2.745s
+user	0m0.514s
+sys	0m0.007s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+8000
+
+real	0m3.160s
+user	0m0.674s
+sys	0m0.008s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+9000
+
+real	0m3.890s
+user	0m0.849s
+sys	0m0.011s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ time ./bubblesort > output
+10000
+
+real	0m5.715s
+user	0m1.048s
+sys	0m0.011s
+]0;005025913@csex11:~/cse330/lab2[005025913@csex11 lab2]$ exit
+
+Script done on Sun 24 Jan 2016 05:18:34 PM EST

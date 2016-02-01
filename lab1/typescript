@@ -1,0 +1,7 @@
+Script started on Mon 25 Jan 2016 01:31:29 PM PST
+]0;005025913@jb358-14:/students/csci/005025913/cse330/lab1]7;file://jb358-14/students/csci/005025913/cse330/lab1[?1034h[005025913@jb358-14 lab1]$ ./infixtopostfix 
+a + b - c
+a b + c - 
+]0;005025913@jb358-14:/students/csci/005025913/cse330/lab1]7;file://jb358-14/students/csci/005025913/cse330/lab1[005025913@jb358-14 lab1]$ exit
+
+Script done on Mon 25 Jan 2016 01:31:59 PM PST
