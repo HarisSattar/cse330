@@ -27,6 +27,12 @@ String::String(const char* p)
 		buffer[i] = p[i];
 }
 
+String::~String()
+{
+	size = 0;
+	delete buffer;
+}
+
 int String::length()
 {
 	return size;
@@ -86,7 +92,25 @@ ostream & operator<<(ostream & os, const String & right)
 	return os;
 }
 
+bool operator<=(const String & left, const String & right)
+{
+	if (left == right)
+		return true;
 
+	for(int i = 0; i < left.size; i++)
+		if (left.buffer[i] > right.buffer[i])
+			return false;
+	
+	for(int i = 0; i < right.size; i++)
+		if (left.buffer[i] > right.buffer[i])
+			return false;
+
+	return true;
+}
+bool operator<(const String &, const String &)
+{
+
+}
 
 
 

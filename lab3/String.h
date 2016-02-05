@@ -14,6 +14,7 @@ public:
 	String();
 	String(const String &);
 	String(const char *);
+	~String();
 	
 	// other methods
 	int length();
@@ -23,14 +24,8 @@ public:
 	friend bool operator==(const String &, const String &);
 	friend String& operator+=(String &, const String &);
 	friend ostream & operator<<(ostream &, const String &);
-	
-	/*
-	~String();
-
-
 	friend bool operator<=(const String &, const String &);
 	friend bool operator<(const String &, const String &);
-	*/
 };
 
 #endif
