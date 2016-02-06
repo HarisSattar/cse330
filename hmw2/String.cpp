@@ -153,13 +153,25 @@ String operator*(const String & left, const int n)
 String operator-(const String & left, const String & right)
 {
 	String temp = left;
-	for (int i = 0; i < temp.size; i++)
-		for (int j = 0; j < right.size; j++) {
-			if(temp.buffer[i] == right.buffer[j]) {
-				cout << temp.buffer[i] << " " << i << endl << right.buffer[j] << " " << j << endl;
-				temp.buffer[i] = temp.buffer[i + 1];
-			}
-		}
+	String sub = right;
+	sub.buffer = new char[sub.size];
+	int substart = 0, subend = 0;
 
-	return temp;			
+	for (int start = 0; start < left.size - right.size + 1; start++) 
+	{		
+		for (int i = 0; i < right.size; i++)
+	   	{
+			sub.buffer[i] = left.buffer[start + i];
+			substart = start + i - right.size + 1;
+			subend = start + i;
+		}
+		if (sub == right) 
+		{
+			temp.size -= right.size;
+			for (int j = 0; j <= temp.size; j++) {
+				temp[substart++] = temp[++subend];
+			}
+		}			
+	}
+	return temp;
 }

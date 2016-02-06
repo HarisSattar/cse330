@@ -6,8 +6,8 @@ using namespace std;
 
 int main()
 {
-	String s1("wolf");
-	String s2("erewolf");
+	String s1("firetruckfiretruck");
+	String s2("truck");
 
 	String s3 = s1 - s2;
 
