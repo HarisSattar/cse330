@@ -1,6 +1,13 @@
 // String_test.cpp
 
 #include <iostream>
+/*
+ * Haris Sattar
+ * String_test.cpp
+ * 2/5/16
+ * This tests the methods for String class
+ */
+
 #include <cassert>
 #include "String.h"
 
@@ -35,4 +42,4 @@ int main()
 	assert(not (s1 == "hire"));
 	
 	cout << "SUCCESS" << endl;
-}
+} // main
