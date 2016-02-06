@@ -91,23 +91,6 @@ String operator+=(String & left, const String & right)
 	return left;
 } // +=
 
-String operator+(const String & left, const String & right)
-{
-	String temp;
-	int size = left.size + right.size;
-	temp.size = size;
-
-	temp.buffer = new char[size];
-
-	int i;
-	for (i = 0; i < left.size; i++)
-		temp.buffer[i] = left.buffer[i];
-	for (int j = 0; i < size; i++, j++)
-		temp.buffer[i] = right.buffer[j];
-
-	return temp;
-}
-
 ostream & operator<<(ostream & os, const String & right)
 {
 	for (int i = 0; i < right.size; i++)
@@ -147,6 +130,23 @@ String operator*(const String & left, const int n)
 	for (int i = 0; i < n; i++)
 		temp += left;
 	cout << temp.size << endl;
+	return temp;
+}
+
+String operator+(const String & left, const String & right)
+{
+	String temp;
+	int size = left.size + right.size;
+	temp.size = size;
+
+	temp.buffer = new char[size];
+
+	int i;
+	for (i = 0; i < left.size; i++)
+		temp.buffer[i] = left.buffer[i];
+	for (int j = 0; i < size; i++, j++)
+		temp.buffer[i] = right.buffer[j];
+
 	return temp;
 }
 
