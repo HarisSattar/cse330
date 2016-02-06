@@ -97,19 +97,22 @@ bool operator<=(const String & left, const String & right)
 	if (left == right)
 		return true;
 
+	if (left.size > right.size)
+		return false;
+
 	for(int i = 0; i < left.size; i++)
-		if (left.buffer[i] > right.buffer[i])
-			return false;
-	
-	for(int i = 0; i < right.size; i++)
 		if (left.buffer[i] > right.buffer[i])
 			return false;
 
 	return true;
 }
-bool operator<(const String &, const String &)
-{
 
+bool operator<(const String & left, const String & right)
+{
+	if ((left <= right) && !(left == right))
+		return true;
+
+	return false;
 }
 
 
