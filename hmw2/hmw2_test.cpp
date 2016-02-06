@@ -13,7 +13,7 @@ int main()
 
 	cout << s3 << endl;
 
-	//assert(s3 == "wf");
+	assert(s3 == "firefire");
 
 	cout << "SUCCESS" << endl;
 
