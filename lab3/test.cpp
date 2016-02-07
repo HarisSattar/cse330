@@ -12,7 +12,7 @@ using namespace std;
 
 main()
 {
-	String s1("abcd"), s2("abe");
+	String s1("bbbbbbb"), s2("abe");
 
 	if ( not (s1 == s2) )
 		if (s1 <= s2)
