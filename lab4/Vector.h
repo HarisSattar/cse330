@@ -144,38 +144,6 @@ void Vector<T>::resize(unsigned int size)
 }
 
 template <class T>
-T & Vector<T>::operator[](unsigned int index)
-{
-	return buffer[index];
-}
-
-template <class T>
-bool Vector<T>::operator==(const Vector<T> & right)
-{
-	if (size != right.size)
-		return false;
-		
-	int i, j;
-	for (i = 0, j = 0; i < size && j < right.size; i++, j++)
-		if (buffer[i] != right.buffer[j])
-			return false;
-	
-	return true;
-}
-
-template <class T>
-Vector<T> & Vector<T>::operator=(const Vector<T> & right)
-{
-	delete [] buffer;
-	my_size = right.size();
-	my_capacity = right.capacity();
-	buffer = new T[my_capacity];
-	
-	for (int i = 0; i < my_size; i++)
-		buffer[i] = right.buffer[i];
-}
-
-template <class T>
 void Vector<T>::pop_back()
 {
 	if (my_size == 0)
@@ -194,16 +162,36 @@ void Vector<T>::push_back(const T & value)
 	my_size++;
 }
 
+template <class T>
+bool Vector<T>::operator==(const Vector<T> & right)
+{
+	if (size != right.size)
+		return false;
+		
+	int i, j;
+	for (i = 0, j = 0; i < size && j < right.size; i++, j++)
+		if (buffer[i] != right.buffer[j])
+			return false;
+	
+	return true;
+}
+
+template <class T>
+T & Vector<T>::operator[](unsigned int index)
+{
+	return buffer[index];
+}
+
+template <class T>
+Vector<T> & Vector<T>::operator=(const Vector<T> & right)
+{
+	delete [] buffer;
+	my_size = right.size();
+	my_capacity = right.capacity();
+	buffer = new T[my_capacity];
+	
+	for (int i = 0; i < my_size; i++)
+		buffer[i] = right.buffer[i];
+}
+
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
