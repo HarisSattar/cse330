@@ -1,0 +1,296 @@
+Haris Sattar
+Lab 3: String
+Winter 2016
+CSE 330
+
+1. Status: 100% completed
+
+2. Complexity Analysis:
+
+    String() the time complexity is O(1).
+
+    String(const String& s) the time complexity is O(n).
+
+    String(const char* p) the time complexity is O(n).
+
+    ~String() the time complexity is O(1).
+
+    length() the time complexity is O(1).
+
+    operator[](int i) the time complexity is O(1).
+
+    operator=(const String& s) the time complexity is O(n).
+
+    operator==(const String& left, const String& right) the time complexity is O(n).
+
+    operator+=(String& left, const String& right) the time complexity is O(n).
+
+    operator<<(ostream& os, const String& right) the time complexity is O(n).
+
+    operator<=(const String& left, const String& right) the time complexity is O(n).
+
+    operator<(const String& left, const String& right) the time complexity is O(n).
+
+    for all the functions above the storage complexity is O(1).
+
+3. Source Code:
+
+/*
+* Haris Sattar
+* String.h
+* 2/5/16
+* This is the header file for String.cpp
+*/
+
+#ifndef STRING_H
+#define STRING_H
+
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class String {
+    int size;
+    char * buffer;
+public:
+    String();
+    String(const String&);
+    String(const char*);
+    ~String();
+
+    // other methods
+    int length();
+    char & operator[](int i);
+    String operator=(const String&);
+
+    friend bool operator==(const String&, const String&);
+    friend String operator+=(String&, const String&);
+    friend ostream & operator<<(ostream&, const String&);
+    friend bool operator<=(const String&, const String&);
+    friend bool operator<(const String&, const String&);
+}; // String
+
+#endif
+
+/*
+* Haris Sattar
+* String.cpp
+* 2/5/16
+* This is the implementation of the String class.
+* This is a String class it has overloaded opertaor methods to make it more like
+* the standard string class.
+*/
+
+
+#include "String.h"
+
+using namespace std;
+
+// defualt constructor for String
+String::String()
+{
+    size = 0;
+    buffer = 0;
+} // String
+
+// copy constructor for String
+String::String(const String& s)
+{
+    size = s.size;
+    buffer = new char[size];
+    for (int i = 0; i < size; i++)
+        buffer[i] = s.buffer[i];
+} // String
+
+// converts char string array to a String
+String::String(const char* p)
+{
+    size = strlen(p);
+    buffer = new char[size];
+
+    for (int i = 0; i < size; i++)
+        buffer[i] = p[i];
+} // String
+
+// destructor for String
+String::~String()
+{
+    size = 0;
+    delete[] buffer;
+} // ~String
+
+int String::length()
+{
+    return size;
+} // length
+
+//indexing operator for String
+char & String::operator[](int i)
+{
+    return buffer[i];
+} // []
+
+// assignment operator for String
+String String::operator=(const String& s)
+{
+    size = s.size;
+    buffer = new char[size];
+
+    for (int i = 0; i < size; i++)
+        buffer[i] = s.buffer[i];
+
+    return *this;
+} // =
+
+// function returns true if left and right strings are equal
+bool operator==(const String& left, const String& right)
+{
+    if (left.size != right.size)
+        return false;
+
+    for (int i = 0; i < right.size; i++)
+        if (left.buffer[i] != right.buffer[i])
+            return false;
+
+    return true;
+} // ==
+
+// function appends right side string to the left side string
+String operator+=(String& left, const String& right)
+{
+    String temp = left;
+    int size = left.size + right.size;
+    left.buffer = new char[size];
+
+    int i;
+    for (i = 0; i < left.size; i++)
+        left.buffer[i] = temp.buffer[i];
+
+    left.size = size;
+
+    for (int j = 0; i < size; i++, j++)
+        left.buffer[i] = right.buffer[j];
+
+    return left;
+} // +=
+
+// function that handles the output << operator
+ostream & operator<<(ostream& os, const String& right)
+{
+    for (int i = 0; i < right.size; i++)
+        os << right.buffer[i];
+
+    return os;
+} // <<
+
+// function that tells if the left string is less than or equalt to the right
+bool operator<=(const String& left, const String& right)
+{
+    if (left == right)
+        return true;
+
+    if (left.size > right.size)
+        for (int i = 0; i < right.size; i++)
+            if (left.buffer[i] > right.buffer[i])
+                return false;
+
+    if (left.size < right.size)
+        for (int i = 0; i < left.size; i++)
+            if (left.buffer[i] > right.buffer[i])
+                return false;
+
+    return true;
+} // <=
+
+// same as <= operator but returns true only if it is less than
+bool operator<(const String& left, const String& right)
+{
+    if ((left <= right) && !(left == right))
+        return true;
+
+    return false;
+} // <
+
+/*
+ * Haris Sattar
+ * String_test.cpp
+ * 2/5/16
+ * This tests the methods for the String class
+ */
+
+#include <iostream>
+#include <cassert>
+#include "String.h"
+
+using namespace std;
+
+int main()
+{
+    String s1; // s1 == ""
+    assert(s1.length() == 0);
+ 
+    String s2("hi");  // s2 == "hi"
+    assert(s2.length() == 2);
+
+    String s3(s2);  // s3 == "hi"
+    assert(s3.length() == 2);
+    assert(s3[0] == 'h');
+    assert(s3[1] == 'i');
+ 
+    s1 = s2;  // s1 == "hi"
+    assert(s1 == s2);
+ 
+    s3 = "bye";  // s3 == "bye"
+    assert(s3.length() == 3);
+    assert(s3[0] == 'b');
+    assert(s3[1] == 'y');
+    assert(s3[2] == 'e');
+     
+    s1 += "re";  // s1 == "hire"
+    assert(s1 == "hire");
+ 
+    s1 += "d"; // s1 == "hired"
+    assert(not (s1 == "hire"));
+ 
+    cout << "SUCCESS" << endl;
+} // main
+
+/*
+ * Haris Sattar
+ * test.cpp
+ * 2/5/16
+ * this tests < and <= for the String class
+ */
+ 
+
+#include <iostream>
+#include "String.h"
+
+using namespace std;
+
+main()
+{
+    String s1("abcd"), s2("abe");
+
+    if ( not (s1 == s2) )
+        if (s1 <= s2)
+            cout << s1 << " <= " << s2 << endl;
+        else
+            cout << s1 << " > " << s2 << endl;
+    else
+        cout << "equal: " << s1 << " " << s2;
+} // main
+
+4. Sample Run
+
+Script started on Sun 07 Feb 2016 06:56:51 PM EST
+[005025913@csex11 lab3]$ g++ String.o String_test.o
+[005025913@csex11 lab3]$ ./a.out 
+SUCCESS
+[005025913@csex11 lab3]$ g++ String.o test.o
+[005025913@csex11 lab3]$ ./a.out 
+abcd <= abe
+[005025913@csex11 lab3]$ exit
+
+Script done on Sun 07 Feb 2016 06:57:39 PM EST

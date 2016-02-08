@@ -9,6 +9,7 @@
 #define STRING_H
 
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -17,8 +18,8 @@ class String {
 	char * buffer;
 public:
 	String();
-	String(const String &);
-	String(const char *);
+	String(const String&);
+	String(const char*);
 	~String();
 
 	// other methods
@@ -26,11 +27,11 @@ public:
 	char & operator[](int i);
 	String operator=(const String&);
 
-	friend bool operator==(const String &, const String &);
-	friend String operator+=(String &, const String &);
-	friend ostream & operator<<(ostream &, const String &);
-	friend bool operator<=(const String &, const String &);
-	friend bool operator<(const String &, const String &);
+	friend bool operator==(const String&, const String&);
+	friend String operator+=(String&, const String&);
+	friend ostream & operator<<(ostream&, const String&);
+	friend bool operator<=(const String&, const String&);
+	friend bool operator<(const String&, const String&);
 }; // String
 
 #endif
