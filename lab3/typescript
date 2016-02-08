@@ -1,0 +1,10 @@
+Script started on Sun 07 Feb 2016 06:56:51 PM EST
+[005025913@csex11 lab3]$ g++ String.o test.o
+[005025913@csex11 lab3]$ ./a.out 
+SUCCESS
+[005025913@csex11 lab3]$ g++ String.o test.o
+[005025913@csex11 lab3]$ ./a.out 
+abcd <= abe
+[005025913@csex11 lab3]$ exit
+
+Script done on Sun 07 Feb 2016 06:57:39 PM EST

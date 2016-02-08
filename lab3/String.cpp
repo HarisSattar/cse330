@@ -1,23 +1,26 @@
 /*
 * Haris Sattar
-* test.cpp
+* String.cpp
 * 2/5/16
-* This is the implementation of the String class
+* This is the implementation of the String class.
+* This is a String class it has overloaded opertaor methods to make it more like
+* the standard string class.
 */
 
-#include <iostream>
-#include <cstring>
+
 #include "String.h"
 
 using namespace std;
 
+// defualt constructor for String
 String::String()
 {
 	size = 0;
 	buffer = 0;
 } // String
 
-String::String(const String & s)
+// copy constructor for String
+String::String(const String& s)
 {
 	size = s.size;
 	buffer = new char[size];
@@ -25,6 +28,7 @@ String::String(const String & s)
 		buffer[i] = s.buffer[i];
 } // String
 
+// converts char string array to a String
 String::String(const char* p)
 {
 	size = strlen(p);
@@ -34,6 +38,7 @@ String::String(const char* p)
 		buffer[i] = p[i];
 } // String
 
+// destructor for String
 String::~String()
 {
 	size = 0;
@@ -45,11 +50,13 @@ int String::length()
 	return size;
 } // length
 
+//indexing operator for String
 char & String::operator[](int i)
 {
 	return buffer[i];
 } // []
 
+// assignment operator for String
 String String::operator=(const String& s)
 {
 	size = s.size;
@@ -61,7 +68,8 @@ String String::operator=(const String& s)
 	return *this;
 } // =
 
-bool operator==(const String & left, const String & right)
+// function returns true if left and right strings are equal
+bool operator==(const String& left, const String& right)
 {
 	if (left.size != right.size)
 		return false;
@@ -73,7 +81,8 @@ bool operator==(const String & left, const String & right)
 	return true;
 } // ==
 
-String operator+=(String & left, const String & right)
+// function appends right side string to the left side string
+String operator+=(String& left, const String& right)
 {
 	String temp = left;
 	int size = left.size + right.size;
@@ -91,7 +100,8 @@ String operator+=(String & left, const String & right)
 	return left;
 } // +=
 
-ostream & operator<<(ostream & os, const String & right)
+// function that handles the output << operator
+ostream & operator<<(ostream& os, const String& right)
 {
 	for (int i = 0; i < right.size; i++)
 		os << right.buffer[i];
@@ -99,10 +109,11 @@ ostream & operator<<(ostream & os, const String & right)
 	return os;
 } // <<
 
-bool operator<=(const String & left, const String & right)
+// function that tells if the left string is less than or equalt to the right
+bool operator<=(const String& left, const String& right)
 {
 	if (left == right)
-		return true;
+	   return true;
 
 	if (left.size > right.size)
 		for (int i = 0; i < right.size; i++)
@@ -117,7 +128,8 @@ bool operator<=(const String & left, const String & right)
 	return true;
 } // <=
 
-bool operator<(const String & left, const String & right)
+// same as <= operator but returns true only if it is less than
+bool operator<(const String& left, const String& right)
 {
 	if ((left <= right) && !(left == right))
 		return true;
