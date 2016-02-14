@@ -96,24 +96,9 @@ void List<T>::push_back(const T& x)
     if (empty())
         last_link = first_link = new_link;
     else {
-        last_link->next_link = new_link;
 		new_link->prev_link = last_link;
+        last_link->next_link = new_link;
 		last_link = new_link;
-    }
-    my_size++;
-}
-
-template <class T>
-void List<T>::push_front(const T& x)
-{
-    Link<T>* new_link = new Link<T>(x);
-
-    if (empty())
-        first_link = last_link = new_link;
-    else {
-        first_link->prev_link = new_link;
-		new_link->next_link = first_link;
-		first_link = new_link;
     }
     my_size++;
 }
@@ -135,20 +120,89 @@ T & List<T>::back() const
 {
     return last_link->value;
 }
+template <class T>
+
+void List<T>::push_front(const T& x)
+{
+	Link<T>* new_link = new Link<T>(x);
+
+	if (empty())
+		first_link = last_link = new_link;
+	else {
+		first_link->prev_link = new_link;
+		new_link->next_link = first_link;
+		first_link = new_link;
+	}
+	my_size++;
+}
 
 template <class T>
 void List<T>::insert(iterator pos, const T & x)
 {
-    Link<T> * new_link = new Link<T>(x);
-    Link<T> * current = pos->current_link;
+	if (pos == begin())
+		push_front(x);
+	else if (pos == end())
+		push_back(x);
+	else {
+		Link<T> * new_link = new Link<T>(x);
+		Link<T> * current = pos.current_link;
 
-    new_link->next_link = current;
-    new_link->prev_link = current->prev_link;
-    current->prev_link = new_link;
-    current = new_link->prev_link;
+		new_link->next_link = current;
+		new_link->prev_link = current->prev_link;
+		current->prev_link = new_link;
+		current = new_link->prev_link;
 
-    if (current != 0)
-        current->next_link = new_link;
+		if (current != 0)
+		current->next_link = new_link;
+		my_size++;
+	}
+}
+
+template <class T>
+void List<T>::pop_front()
+{
+	Link<T> * save = first_link;
+	first_link = first_link->next_link;
+
+	if (first_link != 0)
+		first_link->prev_link = 0;
+	else
+		last_link = 0;
+
+	delete save;
+	my_size--;
+}
+
+template <class T>
+void List<T>::pop_back()
+{
+	Link<T> * save = last_link;
+	last_link = last_link->prev_link;
+
+	if (last_link != 0)
+		last_link->next_link = 0;
+	else
+		first_link = 0;
+
+	delete save;
+	my_size--;
+}
+
+template <class T>
+void List<T>::erase(iterator & pos)
+{
+	if (pos == end())
+		pop_back();
+	else if (pos == begin())
+		pop_front();
+	else {
+		Link<T> * save = pos.current_link;
+		save->next_link->prev_link = save->prev_link;
+		save->prev_link->next_link = save->next_link;
+
+		delete save;
+	}
+	my_size--;
 }
 
 template <class T>
@@ -204,6 +258,12 @@ List_iterator<T> & List_iterator<T>::operator++() // pre-increment
 }
 
 // more code goes here
+template <class T>
+typename List_iterator<T>::iterator & List_iterator<T>::operator=(const iterator & rhs)
+{
+	current_link = rhs.current_link;
+}
+
 template <class T>
 List_iterator<T> List_iterator<T>::operator++(int)
 {
