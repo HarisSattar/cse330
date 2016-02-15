@@ -1,0 +1,7 @@
+Script started on Sun 14 Feb 2016 07:38:59 PM EST
+[005025913@csex11 lab4]$ g++ Vector_test.cpp -o Vector_test
+[005025913@csex11 lab4]$ ./Vector_test
+SUCCESS
+[005025913@csex11 lab4]$ exit
+
+Script done on Sun 14 Feb 2016 07:39:32 PM EST
