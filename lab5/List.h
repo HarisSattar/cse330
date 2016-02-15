@@ -201,8 +201,8 @@ void List<T>::erase(iterator & pos)
 		save->prev_link->next_link = save->next_link;
 
 		delete save;
+		my_size--;
 	}
-	my_size--;
 }
 
 template <class T>
