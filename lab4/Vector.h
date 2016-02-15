@@ -1,7 +1,12 @@
+/*
+* Haris Sattar
+* Vector.h
+* 2/14/16
+* This is the header file for Vector_test.cpp
+*/
+
 #ifndef VECTOR_H
 #define VECTOR_H
-
-// Vector.h
 
 using namespace std;
 
@@ -62,7 +67,7 @@ Vector<T>::Vector(unsigned int size, const T& initial)
 	my_size = size;
 	my_capacity = my_size;
 	buffer = new T[my_capacity];
-	
+
 	for (int i = 0; i < my_size; i++)
 		buffer[i] = initial;
 }
@@ -73,7 +78,7 @@ Vector<T>::Vector(const Vector<T>& v)
 	my_size = v.size();
 	my_capacity = v.capacity();
 	buffer = new T[my_capacity];
-	
+
 	for (int i = 0; i < my_size; i++)
 		buffer[i] = v.buffer[i];
 }
@@ -126,12 +131,12 @@ void Vector<T>::reserve(unsigned int capacity)
 
 	if (capacity <= my_capacity)
 		return;
-		
+
 	T* new_buffer = new T[capacity];
-	
+
 	for (int i = 0; i < my_size; i++)
 		new_buffer[i] = buffer[i];
-	
+
 	my_capacity = capacity;
 	delete [] buffer;
 	buffer = new_buffer;
@@ -149,7 +154,7 @@ void Vector<T>::pop_back()
 {
 	if (my_size == 0)
 		return;
-		
+
 	my_size--;
 }
 
@@ -158,7 +163,7 @@ void Vector<T>::push_back(const T& value)
 {
 	if (my_size >= my_capacity)
 		reserve(my_capacity + 5);
-		
+
 	buffer[my_size] = value;
 	my_size++;
 }
@@ -168,12 +173,12 @@ bool Vector<T>::operator==(const Vector<T>& right)
 {
 	if (size != right.size)
 		return false;
-		
+
 	int i, j;
 	for (i = 0, j = 0; i < size && j < right.size; i++, j++)
 		if (buffer[i] != right.buffer[j])
 			return false;
-	
+
 	return true;
 }
 
@@ -190,7 +195,7 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& right)
 	my_size = right.size();
 	my_capacity = right.capacity();
 	buffer = new T[my_capacity];
-	
+
 	for (int i = 0; i < my_size; i++)
 		buffer[i] = right.buffer[i];
 }
@@ -198,7 +203,7 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& right)
 template <class T>
 T& Vector<T>::front()
 {
-	return buffer[0];	
+	return buffer[0];
 }
 
 template <class T>

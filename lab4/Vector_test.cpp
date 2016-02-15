@@ -1,27 +1,34 @@
+/*
+* Haris Sattar
+* Vector_test.cpp
+* 2/5/16
+* This is the test file for Vector.h
+*/
+
 #include <iostream>
 #include <string>
 #include <cassert>
 #include "Vector.h"
 
 using namespace std;
-   
+
 int main()
-{  
+{
 
    Vector<int> v;
 
    v.reserve(2);
-   
+
    assert(v.capacity() == 2);
    Vector<string> v1(2);
    assert(v1.capacity() == 2);
    assert(v1.size() == 2);
    assert(v1[0] == "");
    assert(v1[1] == "");
-        
+
    v1[0] = "hi";
    assert(v1[0] == "hi");
-        
+
    Vector<int> v2(2, 7);
    assert(v2[1] == 7);
 
@@ -64,7 +71,6 @@ int main()
    assert(v6.size() == 2);
    assert(v6[0] == 100);
    v6.push_back(101);
-/*       
-*/
+
    cout << "SUCCESS\n";
 }
