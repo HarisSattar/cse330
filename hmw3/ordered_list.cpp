@@ -120,14 +120,14 @@ int main()
 
 	list<int> l3 = unordered_intersect(l1, l2);
 
-	cout << "l1 ∩ l2 = ";
+	cout << "l1 Intersect l2 = ";
 	for (list<int>::iterator itr = l3.begin(); itr != l3.end(); itr++)
 		cout << *itr << " ";
 	cout << endl << endl;
 
 	list<int> l4 = unordered_union(l1, l2);
 
-	cout << "l1 ∪ l2 = ";
+	cout << "l1 Union l2 = ";
 	for (list<int>::iterator itr = l4.begin(); itr != l4.end(); itr++)
 		cout << *itr << " ";
 	cout << endl;
