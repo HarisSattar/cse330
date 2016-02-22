@@ -18,7 +18,7 @@ public:
 	Deque(const unsigned int size, const T& initial): vec_one(size/2, initial), vec_two(size-(size/2), initial) { }
 	Deque(const Deque<T> & d): vec_one(d.vec_one), vec_two(d.vec_two) { }
     ~Deque() { } // destructors for vecOne and vecTwo are automatically called
-                     // never call a destructor explicitly
+                 // never call a destructor explicitly
     Deque & operator=(const Deque<T> & d);
 
 	T & operator[](unsigned int);
