@@ -19,9 +19,13 @@ main()
 
 	Deque<int> c;
 	c = d;
-
 	Deque<int>::iterator i;
+	i = d.begin();
+	i++;
+	cout << *i << " ";
+/*
 	for (i = c.begin(); i != c.end(); ++i)
 		cout << *i << " ";
 	cout << endl;
+*/
 }

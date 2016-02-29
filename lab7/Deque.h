@@ -41,14 +41,57 @@ protected:
 };
 
 template <class T>
-T & operator[](unsigned int index)
+Deque<T> & Deque<T>::operator=(const Deque<T> & d)
+{
+	vec_one = d.vec_one;
+	vec_two = d.vec_two;
+}
+
+template <class T>
+T & Deque<T>::operator[](unsigned int index)
 {
 	int n = vec_one.size();
 	
-	if (index < n)
+	if (index <= n)
 		return vec_one[(n - 1) - index];
 	else
 		return vec_two[index - n];
+}
+
+template <class T>
+bool Deque<T>::empty()
+{
+	return vec_one.empty() && vec_two.empty();
+}
+
+template <class T>
+void Deque<T>::push_front(const T & value)
+{
+	vec_one.push_back(value);
+}
+
+template <class T>
+void Deque<T>::push_back(const T & value)
+{
+	vec_two.push_back(value);
+}
+
+template <class T>
+int Deque<T>::size()
+{
+	return vec_one.size() + vec_two.size();
+}
+
+template <class T>
+typename Deque<T>::iterator Deque<T>::begin()
+{
+	return iterator(this, 0);
+}
+
+template <class T>
+typename Deque<T>::iterator Deque<T>::end()
+{
+	return iterator(this, size());
 }
 
 // Your code goes here ...
@@ -71,11 +114,69 @@ public:
 	bool operator!=(const iterator & r);
 	bool operator<(const iterator & r);
 	T & operator[](unsigned int i);
-	iterator operator=(const iterator & r);
+	void operator=(const iterator & r);
 	iterator operator+(int i);
 	iterator operator-(int i);
 protected:
 	Deque<T> * theDeque;
 	int index;
 };
+
+template <class T>
+typename DequeIterator<T>::iterator DequeIterator<T>::operator++(int)
+{
+	
+}
+
+template <class T>
+typename DequeIterator<T>::iterator & DequeIterator<T>::operator++()
+{
+	++index;
+	return *this;
+}
+
+template <class T>
+typename DequeIterator<T>::iterator DequeIterator<T>::operator--(int)
+{
+	
+}
+
+template <class T>
+typename DequeIterator<T>::iterator & DequeIterator<T>::operator--()
+{
+	--index;
+	return *this;
+}
+
+template <class T>
+bool DequeIterator<T>::operator==(const DequeIterator<T>::iterator & r)
+{
+	return theDeque == r.theDeque && index == r.index;
+}
+
+template <class T>
+bool DequeIterator<T>::operator!=(const DequeIterator<T>::iterator & r)
+{
+	return theDeque != r.theDeque && index != r.index;
+}
+
+template <class T>
+bool DequeIterator<T>::operator<(const DequeIterator<T>::iterator & r)
+{
+	return theDeque == r.theDeque && index < r.index;
+}
+
+template <class T>
+void DequeIterator<T>::operator=(const DequeIterator<T>::iterator & r)
+{
+	theDeque == r.theDeque;
+	index == r.index;
+}
+
+template <class T>
+T & DequeIterator<T>::operator*()
+{
+	return (*theDeque)[index];
+}
+
 #endif

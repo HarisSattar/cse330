@@ -10,11 +10,11 @@ using namespace std;
 main()
 {
 	Deque<int> d;
-
 	d.push_back(10);
 	d.push_back(20);
 	assert(d.front() == 10);
 	assert(d.back() == 20);
+/*
 
 	d.push_front(1);
 	d.push_front(2);
@@ -67,6 +67,6 @@ main()
 
 	for (counter = 0; counter < c.size(); counter++)
 		assert(c[counter] == counter);
-
+*/
 	cout << "SUCCESS\n";
 }
