@@ -10,39 +10,39 @@ using namespace std;
 
 int main()
 {
-   Queue<int, List> q1;
-   assert(q1.size() == 0);
-   assert(q1.empty());
+    Queue<int, List> q1;
+    assert(q1.size() == 0);
+    assert(q1.empty());
 
-   q1.push(16);
-   assert(q1.size() == 1);
-   assert(q1.front() == 16);
+    q1.push(16);
+    assert(q1.size() == 1);
+    assert(q1.front() == 16);
 
-   q1.pop();
-   assert(q1.size() == 0);
+    q1.pop();
+    assert(q1.size() == 0);
 
-   q1.push(11);
-   assert(q1.size() == 1);
-   assert(q1.back() == 11);
+    q1.push(11);
+    assert(q1.size() == 1);
+    assert(q1.back() == 11);
 
-   q1.push(22);
-   assert(q1.size() == 2);
-   assert(q1.front() == 11);
+    q1.push(22);
+    assert(q1.size() == 2);
+    assert(q1.front() == 11);
 
-   q1.push(33);
-   assert(q1.size() == 3);
-   assert(q1.front() == 11);
+    q1.push(33);
+    assert(q1.size() == 3);
+    assert(q1.front() == 11);
 
-   q1.pop();
-   assert(q1.size() == 2);
-   assert(q1.front() == 22);
-   assert(q1.back() == 33);
+    q1.pop();
+    assert(q1.size() == 2);
+    assert(q1.front() == 22);
+    assert(q1.back() == 33);
 
-   Queue<String, List> q2;
-   q2.push("abc");
-   q2.push("de");
-   q2.pop();
-   assert(q2.front() == "de");
+    Queue<String, List> q2;
+    q2.push("abc");
+    q2.push("de");
+    q2.pop();
+    assert(q2.front() == "de");
 
-   cout << "SUCCESS\n";
+    cout << "SUCCESS\n";
 }

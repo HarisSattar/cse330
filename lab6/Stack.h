@@ -1,3 +1,10 @@
+/*******************************************************************************************
+* Haris Sattar
+* Stack.h
+* 2/24/16
+* header file for Stack
+*******************************************************************************************/
+
 #ifndef STACK_H
 #define STACK_H
 
@@ -11,14 +18,14 @@ template <class T, template <class T> class Container = List>
 class Stack
 {
 public:
-   bool empty() const { return container.empty(); };
-   unsigned int size() const { return container.size(); }
-   void push(const T & x) { container.push_back(x); }
-   void pop() { container.pop_back(); }
-   T & top() { return container.back(); }
+    bool empty() const { return container.empty(); };
+    unsigned int size() const { return container.size(); }
+    void push(const T & x) { container.push_back(x); }
+    void pop() { container.pop_back(); }
+    T & top() { return container.back(); }
 
 private:
-   Container<T> container;
+    Container<T> container;
 };
 
 #endif

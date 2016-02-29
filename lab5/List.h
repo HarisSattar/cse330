@@ -1,3 +1,10 @@
+/*******************************************************************************************
+ * Haris Sattar
+ * List.h
+ * 2/20/16
+ * header file for List
+ *******************************************************************************************/
+
 #ifndef LIST_H
 #define LIST_H
 
@@ -41,6 +48,7 @@ protected:
     unsigned int my_size;
 };
 
+// constructor
 template <class T>
 List<T>::List()
 {
@@ -49,6 +57,7 @@ List<T>::List()
     my_size = 0;
 }
 
+// copy constructor
 template <class T>
 List<T>::List(const List & l)
 {
@@ -59,6 +68,7 @@ List<T>::List(const List & l)
         push_back(current -> value);
 }
 
+// destructor
 template <class T>
 List<T>::~List()
 {
@@ -70,24 +80,28 @@ List<T>::~List()
 	}
 }
 
+// returns an iterator to the first element
 template <class T>
 typename List<T>::iterator List<T>::begin() const
 {
     return iterator(first_link);
 }
 
+// returns an iterator to the last element + 1
 template <class T>
 typename List<T>::iterator List<T>::end() const
 {
 	return ++iterator(last_link);
 }
 
+// returns the size of the list
 template <class T>
 unsigned int List<T>::size() const
 {
     return my_size;
 }
 
+// adds element to the back of the list
 template <class T>
 void List<T>::push_back(const T& x)
 {
@@ -103,25 +117,29 @@ void List<T>::push_back(const T& x)
     my_size++;
 }
 
+// returns true if list is empty
 template <class T>
 bool List<T>::empty() const
 {
     return first_link == 0;
 }
 
+// returns the value of the first element
 template <class T>
 T & List<T>::front() const
 {
     return first_link->value;
 }
 
+// returns the value of the last element
 template <class T>
 T & List<T>::back() const
 {
     return last_link->value;
 }
-template <class T>
 
+// adds element to the front of the list
+template <class T>
 void List<T>::push_front(const T& x)
 {
 	Link<T>* new_link = new Link<T>(x);
@@ -136,6 +154,7 @@ void List<T>::push_front(const T& x)
 	my_size++;
 }
 
+// adds element before the postiton indicated
 template <class T>
 void List<T>::insert(iterator pos, const T & x)
 {
@@ -158,6 +177,7 @@ void List<T>::insert(iterator pos, const T & x)
 	}
 }
 
+// removes element in the front
 template <class T>
 void List<T>::pop_front()
 {
@@ -173,6 +193,7 @@ void List<T>::pop_front()
 	my_size--;
 }
 
+// removes element in the back
 template <class T>
 void List<T>::pop_back()
 {
@@ -188,6 +209,7 @@ void List<T>::pop_back()
 	my_size--;
 }
 
+// removes an element from the postiton indicated
 template <class T>
 void List<T>::erase(iterator & pos)
 {
@@ -244,26 +266,29 @@ protected:
     friend class List<T>;
 };
 
+// dereferencing operator
 template <class T>
 T & List_iterator<T>::operator*()
 {
     return current_link -> value;
 }
 
+// pre-increment
 template <class T>
-List_iterator<T> & List_iterator<T>::operator++() // pre-increment
+List_iterator<T> & List_iterator<T>::operator++()
 {
     current_link = current_link -> next_link;
     return *this;
 }
 
-// more code goes here
+// assignment operator
 template <class T>
 typename List_iterator<T>::iterator & List_iterator<T>::operator=(const iterator & rhs)
 {
 	current_link = rhs.current_link;
 }
 
+// post-increment
 template <class T>
 List_iterator<T> List_iterator<T>::operator++(int)
 {
@@ -273,12 +298,14 @@ List_iterator<T> List_iterator<T>::operator++(int)
 
 }
 
+// equal operator
 template <class T>
 bool List_iterator<T>::operator==(const iterator & rhs) const
 {
 	return current_link == rhs.current_link;
 }
 
+// not equal operator
 template <class T>
 bool List_iterator<T>::operator!=(const iterator & rhs) const
 {

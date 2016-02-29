@@ -1,0 +1,207 @@
+Haris Sattar
+Lab 6: Stack and Queue
+Winter 2016
+CSE 330
+
+1. Status: 100% completed
+
+2. Complexity Analysis:
+    Stack:
+        Function:                         Time:           Space:
+        empty()                           O(1)            O(1)
+        size()                            O(1)            O(1)
+        push(const T & x)                 O(1)            O(1)
+        pop()                             O(1)            O(1)
+        top()                             O(1)            O(1)
+
+    Queue:
+        Function:                         Time:           Space:
+        empty()                           O(1)            O(1)
+        size()                            O(1)            O(1)
+        push(const T & x)                 O(1)            O(1)
+        pop()                             O(1)            O(1)
+        front()                           O(1)            O(1)
+        back()                            O(1)            O(1)
+
+3. Source Code:
+/*******************************************************************************************
+* Haris Sattar
+* Stack.h
+* 2/24/16
+* header file for Stack
+*******************************************************************************************/
+
+#ifndef STACK_H
+#define STACK_H
+
+// Stack.h  -- a stack implemented as an adapter (of vector or list or ...)
+
+#include "../lab5/List.h"
+
+using namespace std;
+
+template <class T, template <class T> class Container = List>
+class Stack
+{
+public:
+    bool empty() const { return container.empty(); };
+    unsigned int size() const { return container.size(); }
+    void push(const T & x) { container.push_back(x); }
+    void pop() { container.pop_back(); }
+    T & top() { return container.back(); }
+
+private:
+    Container<T> container;
+};
+
+#endif
+
+// Stack_test.cpp
+
+#include <iostream>
+#include <cassert>
+#include "Stack.h"
+#include "../lab3/String.h"
+#include "../lab4/Vector.h"
+#include "../lab5/List.h"
+
+using namespace std;
+
+int main()
+{
+    Stack<int, Vector> s1;
+    assert(s1.size() == 0);
+    assert(s1.empty());
+
+    s1.push(16);
+    assert(s1.size() == 1);
+    assert(s1.top() == 16);
+
+    s1.pop();
+    assert(s1.size() == 0);
+
+    s1.push(11);
+    assert(s1.size() == 1);
+    assert(s1.top() == 11);
+
+    s1.push(22);
+    assert(s1.size() == 2);
+    assert(s1.top() == 22);
+
+    s1.push(33);
+    assert(s1.size() == 3);
+    assert(s1.top() == 33);
+
+    s1.pop();
+    assert(s1.size() == 2);
+    assert(s1.top() == 22);
+
+    Stack<String, List> s2;
+    s2.push("abc");
+    s2.push("de");
+    s2.pop();
+    assert(s2.top() == "abc");
+
+    cout << "SUCCESS\n";
+}
+
+/*******************************************************************************************
+* Haris Sattar
+* Queue.h
+* 2/24/16
+* header file for Queue
+*******************************************************************************************/
+
+#ifndef QUEUE_H
+#define QUEUE_H
+
+// Queue.h  -- a queue implemented as an adapter (of vector or list or ...)
+
+#include "../lab5/List.h"
+
+using namespace std;
+
+template <class T, template <class T> class Container = List>
+class Queue
+{
+public:
+    bool empty() const { return container.empty(); };
+    unsigned int size() const { return container.size(); }
+    void push(const T & x) { container.push_back(x); }
+    void pop() { container.pop_front(); }
+    T & front() { return container.front(); }
+    T & back() { return container.back(); }
+
+
+private:
+    Container<T> container;
+};
+
+#endif
+
+// Ques_test.cpp
+
+#include <iostream>
+#include <cassert>
+#include "Queue.h"
+#include "../lab3/String.h"
+#include "../lab5/List.h"
+
+using namespace std;
+
+int main()
+{
+    Queue<int, List> q1;
+    assert(q1.size() == 0);
+    assert(q1.empty());
+
+    q1.push(16);
+    assert(q1.size() == 1);
+    assert(q1.front() == 16);
+
+    q1.pop();
+    assert(q1.size() == 0);
+
+    q1.push(11);
+    assert(q1.size() == 1);
+    assert(q1.back() == 11);
+
+    q1.push(22);
+    assert(q1.size() == 2);
+    assert(q1.front() == 11);
+
+    q1.push(33);
+    assert(q1.size() == 3);
+    assert(q1.front() == 11);
+
+    q1.pop();
+    assert(q1.size() == 2);
+    assert(q1.front() == 22);
+    assert(q1.back() == 33);
+
+    Queue<String, List> q2;
+    q2.push("abc");
+    q2.push("de");
+    q2.pop();
+    assert(q2.front() == "de");
+
+    cout << "SUCCESS\n";
+}
+
+4. Sample Run:
+
+    Script started on Sun, Feb 28, 2016  4:27:12 PM
+    [005025913@csex11 lab6]$ g++ -c Stack_test ../lab3/String.cpp
+    [005025913@csex11 lab6]$ g++ Stack_test.o String.o -o Stack_test
+    [005025913@csex11 lab6]$ ./Stack_test
+    SUCCESS
+    [005025913@csex11 lab6]$ exit
+    Script done on Sun, Feb 28, 2016  4:28:04 PM
+
+    Script started on Sun, Feb 28, 2016  4:31:52 PM
+    [005025913@csex11 lab6]$ g++ -c Queue_test ../lab3/String.cpp
+    [005025913@csex11 lab6]$ g++ Queue_test.o String.o -o Queue_test
+    [005025913@csex11 lab6]$ ./Queue_test
+    SUCCESS
+    [005025913@csex11 lab6]$ exit
+    Script done on Sun, Feb 28, 2016  4:33:01 PM
