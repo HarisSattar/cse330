@@ -118,18 +118,46 @@ void Deque<T>::pop_back()
 }
 
 template<class T>
-void Deque<T>::erase(const iterator &)
+void Deque<T>::erase(const iterator & pos)
 {
+	int index = pos.index;
+	int n = vec_one.size();
+
+	if (index < n)
+		vec_one.erase(vec_one.begin() + (n - 1) - index);
+	else
+		vec_two.erase(vec_two.begin() + index - n);
 }
 
 template<class T>
-void Deque<T>::erase(const iterator &, const iterator &)
+void Deque<T>::erase(const iterator & start, const iterator & end)
 {
+	int start_index = start.index;
+	int end_index = end.index;
+	int n = vec_one.size();
+
+	if (start_index < n && end_index < n)
+		for (iterator i = start, j = end; i != j; i++, start_index++)
+			vec_one.erase(vec_one.begin() + (n - 1) - start_index + 1);
+	else if (start_index > n && end_index > n)
+		for (iterator i = start, j = end; i != j; i++, start_index++)
+			vec_two.erase(vec_two.begin() + start_index - n);
+	else {
+		vec_one.erase(vec_one.begin(), vec_one.begin() + (n - 1) - start_index + 1);
+		vec_two.erase(vec_two.begin(), vec_two.begin() + end_index - n);
+	}
 }
 
 template<class T>
-void Deque<T>::insert(const iterator &, const T &)
+void Deque<T>::insert(const iterator & pos, const T & value)
 {
+	int index = pos.index;
+	int n = vec_one.size();
+
+	if (index < n)
+		vec_one.insert(vec_one.begin() + (n - 1) - index + 1, value);
+	else
+		vec_two.insert(vec_two.begin() + index - n, value);
 }
 
 template <class T>
@@ -149,8 +177,6 @@ typename Deque<T>::iterator Deque<T>::end()
 {
 	return iterator(this, size());
 }
-
-// Your code goes here ...
 
 template <class T>
 class DequeIterator {
@@ -238,6 +264,22 @@ template <class T>
 T & DequeIterator<T>::operator*()
 {
 	return (*theDeque)[index];
+}
+
+template <class T>
+typename DequeIterator<T>::iterator DequeIterator<T>::operator+(int i)
+{
+	for (int j = 0; j < i; j++)
+		++(*this);
+	return *this;
+}
+
+template <class T>
+typename DequeIterator<T>::iterator DequeIterator<T>::operator-(int i)
+{
+	for (int j = 0; j < i; j++)
+		--(*this);
+	return *this;
 }
 
 #endif
