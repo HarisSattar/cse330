@@ -7,26 +7,26 @@
 
 using namespace std;
 
-main()
+int main()
 {
 	Deque<int> d;
+
 	d.push_back(10);
 	d.push_back(20);
 	assert(d.front() == 10);
 	assert(d.back() == 20);
-/*
 
 	d.push_front(1);
 	d.push_front(2);
 	d.push_front(3);
 	assert(d.front() == 3);
 	assert(d.back() == 20);
-
 	d.pop_back();
 	d.pop_back();
 	d.pop_back();
 	assert(d.front() == 3);
 	assert(d.back() == 2);
+	/*
 
 	d.push_back(1);
 	d.push_back(0);
