@@ -84,7 +84,8 @@ public:
 //	iterator insert(const T & x); // return an iterator to x if it already exists, otherwise insert and return an iterator to x
 	void insert(const T & x);
 	void erase(const iterator & it);
-	void erase(const T & x) { root = remove(root, x); }
+	//void erase(const T & x) { root = remove(root, x); }
+	void erase(const T & x) { erase(find(x)); }
 	unsigned int count(const T & x) const; // returns 1 or 0 because this is a set, not a multi-set
 	iterator find(const T & x) const;
 	iterator begin() const; // for in-order traversal
@@ -116,16 +117,16 @@ Set<T> Set<T>::operator=(const Set<T> & op)
 // More code for Set goes here ...
 
 template <class T>
-Node<T> * Set<T>::remove(Node<T> * current, const T & test)
+Node<T> * Set<T>::remove(Node<T> * current, const T & elem)
 {
 	if (current != 0) {
 		Node<T> * pa = current->parent;
-		if (test < current->value)
-			current->leftChild = remove(current->leftChild, test);
-		else if (current->value < test)
-			current->rightChild = remove(current->rightChild, test);
+		if (elem < current->value)
+			current->leftChild = remove(current->leftChild, elem);
+		else if (current->value < elem)
+			current->rightChild = remove(current->rightChild, elem);
 		else {
-			Node<T> * result = current->merge(remove(current->leftChild, test), current->rightChild);
+			Node<T> * result = current->merge(remove(current->leftChild, elem), current->rightChild);
 			current->leftChild = current->rightChild = 0;
 			delete current;
 			if (result)

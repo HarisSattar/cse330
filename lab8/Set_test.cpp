@@ -7,9 +7,10 @@
 
 using namespace std;
 
-main()
+int main()
 {
    Set<int> s;
+
    assert(s.size() == 0);
    assert(s.empty());
 
@@ -63,7 +64,6 @@ main()
    iter = s2.find(888);
    assert(iter == s2.end());
 
-/*
    s2.erase(7);
    iter = s2.begin();
    assert(*iter == -1);
@@ -117,6 +117,7 @@ main()
    s2.erase(4);
    iter = s2.begin();
    assert(iter == s2.end());
-*/
+
    cout << "All tests passed." << endl;
 }
+
