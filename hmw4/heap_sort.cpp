@@ -4,21 +4,34 @@
 
 using namespace std;
 
-template <class T>
-void heap_sort(T & c)
+
+
+template <class Iterator>
+void make_heap(Iterator start, Iterator stop)
 {
-	Priority_queue<int> pq;
-	typename T::iterator itr;
-	for (itr = c.begin(); itr != c.end(); itr++)
-		pq.push(*itr);
-		
-	for (itr = c.end(); itr != c.begin(); itr--) {
-		//cout << pq.top() << endl;
-		*itr = pq.top();
-		cout << *itr << endl;
-		pq.pop();
+	unsigned int heapSize = stop - start;
+	for (int i = (heapSize / 2) - 1; i >=0; i--)
+		adjust_heap(start, heapSize, i);
+}
+
+template <class Iterator>
+void sort_heap(Iterator start, Iterator stop)
+{
+	unsigned int lastPosition = stop - start - 1;
+	while (lastPosition > 0) {
+		swap(start[0], start[lastPosition]);
+		adjust_heap(start, lastPosition, 0);
+		lastPosition--;
 	}
 }
+
+template <class Iterator>
+void heap_sort(Iterator start, Iterator stop)
+{
+	make_heap(start, stop);
+	sort_heap(start, stop);
+}
+
 
 int main()
 {
@@ -28,10 +41,10 @@ int main()
 	while (cin >> input)
 		v.push_back(input);
 		
-	heap_sort(v);
+	heap_sort(v.begin(), v.end());
 	
-	for (Vector<int>::iterator i = v.begin(); i != v.end(); i++)
-		cout << *i << " ";
+	for (int i = 0; i < v.size(); i++)
+		cout << v[i] << " ";
 	
 	cout << endl;
 }
