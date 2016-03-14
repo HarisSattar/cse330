@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "../lab4/Vector.h"
 #include "../lab9/Priority_queue.h"
 
@@ -36,10 +37,10 @@ void heap_sort(Iterator start, Iterator stop)
 int main()
 {
 	Vector<int> v;
-	int input;
+	int input1;
 	
-	while (cin >> input)
-		v.push_back(input);
+	while (cin >> input1)
+		v.push_back(input1);
 		
 	heap_sort(v.begin(), v.end());
 	
