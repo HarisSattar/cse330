@@ -3,7 +3,7 @@
 
 // Map.h
 
-#include <set>
+#include "../lab8/Set.h"
 #include "Pair.h"
 
 using namespace std;
@@ -12,8 +12,8 @@ template < class key, class value >
 class Map : public Set < Pair < key, value > >
 {
 public:
-   typedef Set <Pair <key, value> > parent;
-   typedef Set_iterator <Pair <key, value> > iterator;
+   typedef Set < Pair < key, value > > parent;
+   typedef Set_iterator < Pair < key, value > > iterator;
 
    Map(): parent() {}
 
@@ -26,26 +26,20 @@ public:
 template <class key, class value>
 typename Map<key, value>::iterator Map<key, value>::find(const key & k)
 {
-    value_type test;
-    test.first = k;
-    return parent::find(test);
+    return parent::find(Pair<key, value>(k, value()));
 }
 
 template <class key, class value>
 void Map<key, value>::erase(const key & k)
 {
-    iterator where = find(k);
-    if (where != end())
-        erase(where);
+	parent::erase(Pair<key, value>(k, value()));
 }
 
 template <class key, class value>
 value & Map<key, value>::operator[](const key & k)
 {
-    value_type test;
-    test.first = k;
-    pair<iterator, bool> where = insert(test);
-    return (*(where.first)).second;
+	iterator where = parent::insert(Pair<key, value>(k, value()));
+    return (*where).second;
 }
 
 #endif
