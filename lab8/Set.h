@@ -86,7 +86,7 @@ public:
 
     bool empty() const { return root == 0; }
     unsigned int size() const { return my_size; }
-    void insert(const T & x);
+    iterator insert(const T & x);
     void erase(const iterator & it);
     void erase(const T & x) { erase(find(x)); }
     unsigned int count(const T & x) const; // returns 1 or 0 because this is a set, not a multi-set
@@ -142,15 +142,17 @@ Node<T> * Set<T>::remove(Node<T> * current, const T & elem)
 
 // adds an element at the position
 template <class T>
-void Set<T>::insert(const T & x)
+typename Set<T>::iterator Set<T>::insert(const T & x)
 {
     if (count(x) > 0)
-        return;
+        return find(x);
     Node<T> * newNode = new Node<T>(x, 0, 0, 0);
     if (root == 0)
         root = newNode;
-    else
+    else {
         root->insert(newNode);
+    }
+    return find(x);    
 }
 
 // returns an iterator to the first element
