@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 template <class Iterator>
 void make_heap(Iterator start, Iterator stop)
 {
@@ -32,7 +30,6 @@ void heap_sort(Iterator start, Iterator stop)
 	make_heap(start, stop);
 	sort_heap(start, stop);
 }
-
 
 int main()
 {
